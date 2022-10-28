@@ -1,0 +1,12 @@
+.jaan-headerBG{
+    background-image: url("http://jaanbio.com/wp-content/uploads/2015/06/JAANB-slide-1c.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.jaan-bgFilter{
+    /* backdrop-filter: grayscale(.5); */
+    backdrop-filter: blur(5px);
+}
