@@ -1,12 +1,16 @@
-<!---  Website for Jaanbio -->
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- for loading common files.-->
-<script>  $(function(){$("#common-header").load("header.html"); }); </script> 
+<!-- --------------------------------
+Site: jaanbio.com
+Created by: Websiteperfect, llc
+Date: 4.5.2016
+Updated: 2.11.2021
+------------------------------------->
 
-<!-- Common Header-->
-<div id="common-header"></div>
-        
+<!-- Include common header and nav -->
+<?php include "header.html"; ?> 
 
-        <header class="py-5 jaan-headerBG">
+
+<!-- Main Body Section -->
+<header class="py-5 jaan-headerBG">
             <div class="container pyx-5 jaan-bgFilter">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
@@ -73,15 +77,8 @@
                 </div>
             </div>
         </section>
-  
 
-        <!-- Common Footer-->
-        <script>  $(function(){$("#common-footer").load("footer.html"); }); </script> 
-        <div id="common-footer"></div>
-        
-        <!-- JS files -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap core JS-->
-        <script src="js/scripts.js"></script><!-- Core theme JS-->
-        <script type="module" src="js/jaanbio-wpApi.js"></script>
-    </body>
-</html>
+<!-- Include common footer and js files. -->
+
+<?php include "footer.html"; ?> 
+<script type="module" src="js/jaanbio-wpApi.js"></script>

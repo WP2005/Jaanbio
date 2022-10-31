@@ -1,5 +1,4 @@
   function createPostObj(data) {
-   // console.log("data is: ", data)
     var postObj=[];
     for(var i in data){
         let postId=data[i].id
@@ -10,14 +9,12 @@
         postObj.push({"postId":postId, "title":title, "category":category, "content":content, "excerpt":excerpt})
     };
     console.log("Postobj is: ", postObj)
-    //console.log('element is:', postObj[0]['content']);
     return postObj;
 }
 
 
 function post_HomePage(postData){
-
-  console.log("whllo", postData)
+  
   postData.forEach(item => {
     if (item.postId==297){  //--- Header Captions ----
       document.getElementById("wpApi_headerTitle").insertAdjacentHTML("beforeend",  item.title);
@@ -48,10 +45,6 @@ function post_HomePage(postData){
 
 }
 
-
-  
-  
-
 //--- Fetch page ----
 const get_wpPosts = function (postURL) {
   fetch(postURL)
@@ -62,7 +55,9 @@ const get_wpPosts = function (postURL) {
       throw new Error(response.status);
     })
     .then((data) => {
-      post_HomePage(createPostObj(data)); 
+      sessionStorage.setItem('postStr',JSON.stringify(createPostObj(data)));
+      post_HomePage(JSON.parse(sessionStorage.getItem('postStr'))); 
+      return;
     })
     .catch((error) => {
       console.log("Error in fetch: ", error);
@@ -70,8 +65,13 @@ const get_wpPosts = function (postURL) {
 }; //--- End Fetch posts ----
 
 
-//* _embed to include the featured image source. NOTE THE UNDERSCORE */
-const postURL =
-  "https://jaanbio.com/wp-json/wp/v2/posts?categories=10";
-  get_wpPosts(postURL);
 
+//sessionStorage.clear('postStr');
+if (!sessionStorage.getItem('postStr')){
+  console.log("A: Session is empty, creating postObj")
+  const postURL = "https://jaanbio.com/wp-json/wp/v2/posts?categories=10";
+  get_wpPosts(postURL)
+}else{
+  console.log("using session: ")
+  post_HomePage(JSON.parse(sessionStorage.getItem('postStr')));
+};
